@@ -30,18 +30,23 @@ Kaggle challenge: https://www.kaggle.com/c/jigsaw-toxic-comment-classification-c
 """
 
 # Original data belongs to https://www.kaggle.com/c/jigsaw-toxic-comment-classification-challenge/data
-! wget https://www.dropbox.com/s/u2cqp8n5uk4hjol/train.csv
-! wget https://www.dropbox.com/s/1b9hfrfey782vq5/test.csv
-! wget https://www.dropbox.com/s/0bgygcpexh2wj3a/test_labels.csv
-! wget https://www.dropbox.com/s/70g8k58gcxfbjv3/sample_submission.csv
-
-! ls -ls
+from setuptools import find_packages
+from setuptools import setup
+REQUIRED_PACKAGES = ['pyyaml','scipy==0.18.1','scikit-learn']
+setup(
+    name='trainer',
+    version='0.1',
+    install_requires=REQUIRED_PACKAGES,
+    packages=find_packages(),
+    include_package_data=True,
+    description='Classifier test'
+)
 
 import pandas as pd
-train = pd.read_csv("train.csv")
-labels = pd.read_csv("test_labels.csv")
-test = pd.read_csv("test.csv")
-subm = pd.read_csv("sample_submission.csv")
+train = pd.read_csv("data/train.csv")
+labels = pd.read_csv("data/test_labels.csv")
+test = pd.read_csv("data/test.csv")
+subm = pd.read_csv("data/sample_submission.csv")
 
 train.head(10)
 
